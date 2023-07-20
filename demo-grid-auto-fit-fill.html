@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>auto-fill vs auto-fit</title>
+    <style>
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            padding: 1rem;
+        }
+
+        .auto-fill {
+
+            margin: 0 auto;
+            display: grid;
+            gap: 1px;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+
+        .auto-fit {
+
+            margin: 0 auto;
+            display: grid;
+            gap: 1px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        .item {
+            background-color: dodgerblue;
+            color: white;
+            padding: 0;
+            margin: 0;
+            height: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>auto-fill vs auto-fit</h1>
+    <hr />
+
+    <pre><code>
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+</code></pre>
+    <div style="display: flex;align-items: baseline;gap: 1rem;">
+        <h2 style="color: red;">auto-fit</h2>
+        <h4>CURRENTLY columns try to take up as many space as possible. the content will stretch to fill the entire row width.</h4>
+    </div>
+    <div class="auto-fit">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+
+    <pre><code>
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+</code></pre>
+    <div style="display: flex;align-items: baseline;gap: 1rem;">
+        <h2 style="color: red;">auto-fill</h2>
+        <h4>Grid try to create as many columns as it can. browser will allow empty columns to occupy space in the row.</h4>
+    </div>
+    <div class="auto-fill">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+    </div>
+</body>
+
+</html>

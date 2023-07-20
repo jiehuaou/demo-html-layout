@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <style>
+        .photo-wrapper {
+            border: 1px solid;
+        }
+
+        .photo-wrapper-flex {
+            border: 1px solid;
+            display: flex;
+        }
+
+        .cat-photo {
+            width: 250px;
+            max-width: 100%;
+        }
+
+        .cat-photo-block {
+            display: block;
+            width: 250px;
+            max-width: 100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="photo-wrapper">
+        <img class="cat-photo" alt="A basketful of cats" src="./images/cats.jpg" />
+    </div>
+
+    <div style="margin: 16px;">Most HTML elements come with sensible defaults. &lt;p&gt; and
+        &lt;h1&gt; are considered block-level elements, while &lt;span&gt; and &lt;strong&gt; are considered inline.
+    </div>
+
+    <div style="margin: 16px;">Inline elements are meant to be used in the middle of paragraphs, not as part of the
+        layout. For
+        example, maybe we want to add a little icon to the middle of a sentence.</div>
+
+    <div style="margin: 16px;">In order to make sure that inline elements don't negatively affect the legibility of the
+        surrounding text, <font style="color: red;">a bit of extra vertical space is added.</font></div>
+
+    <h2>to remove extra base-line space</h2>
+
+    <div class="photo-wrapper">
+        <img class="cat-photo-block" alt="A basketful of cats" src="./images/cats.jpg" />
+    </div>
+
+    <div style="margin: 16px;">Image use "display: block".</div>
+
+    <div class="photo-wrapper-flex">
+        <img class="cat-photo" alt="A basketful of cats" src="./images/cats.jpg" />
+    </div>
+
+    <div style="margin: 16px;">Container use "display: flex".</div>
+</body>
+
+</html>

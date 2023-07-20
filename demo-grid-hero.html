@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero content</title>
+    <style>
+        a {
+            background-color: goldenrod;
+            text-decoration: none;
+            color: white;
+            border-radius: .25rem;
+            text-align: center;
+            display: block;
+            transition: all .3s;
+            margin: 1rem;
+            padding: 0.5rem;
+            align-self: end;
+        }
+
+        a:hover {
+            opacity: .6;
+        }
+
+        .hero {
+            /* Photo by mnm.all on Unsplash */
+            background: url('https://images.unsplash.com/photo-1518176258769-f227c798150e') center;
+            background-size: cover;
+            padding: 2rem;
+
+            /* Grid styles */
+            display: grid;
+            align-items: center;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            max-width: 900px;
+            margin: 0px auto;
+        }
+
+        .breweries {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-gap: 1rem;
+            max-width: calc(900px + 4rem);
+            margin: 0px auto;
+            margin-top: 1rem;
+
+        }
+
+        .breweries>div {
+            border: 1px solid #E2E2E2;
+            border-radius: .5rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .breweries>div>figure {
+            max-height: 150px;
+            overflow: hidden;
+            border-top-left-radius: .5rem;
+            border-top-right-radius: .5rem;
+            position: relative;
+            margin: 0;
+        }
+
+        .breweries>div>figure>figcaption {
+            position: absolute;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, .7);
+            width: 100%;
+        }
+
+        .breweries>div>figure>figcaption>h3 {
+            color: white;
+            margin: 0;
+        }
+
+        .breweries>div>figure>img {
+            width: 100%;
+        }
+
+        .breweries>div>p {
+            padding: 1rem;
+            margin: 0;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .flex-column{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <h1 style="color: white;font-size: 3rem;">You thirsty?</h1>
+        <article class="flex-column">
+            <p style="color: white;font-size: 1.5rem;">Explore local breweries with just one click and stirred by
+                starlight across the centuries light years
+                great turbulent clouds circumnavigated paroxysm of global death.
+            </p>
+            <a href="#breweries">Browse Breweries</a>
+        </article>
+    </section>
+    <section class="breweries" id="breweries">
+        <div>
+            <figure>
+                <!-- Photo by Quentin Dr on Unsplash -->
+                <img src="https://images.unsplash.com/photo-1471421298428-1513ab720a8e"
+                    alt="Several hands holding beer glasses">
+                <figcaption>
+                    <h3>Billions upon billions</h3>
+                </figcaption>
+            </figure>
+            <p>
+                Made in the interiors of collapsing stars star stuff harvesting star light venture billions upon
+                billions Drake Equation brain is the seed of intelligence? hello world, hello world, hello world, hello world, hello world, hello world, 
+            </p>
+            <a href="#">Visit Website</a>
+        </div>
+        <div>
+            <figure>
+                <!-- Photo by Drew Farwell on Unsplash -->
+                <img src="https://images.unsplash.com/photo-1513309914637-65c20a5962e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80"
+                    alt="Several friends doing a toast">
+                <figcaption>
+                    <h3>Drake Equation</h3>
+                </figcaption>
+            </figure>
+            <p>
+                Another world citizens of distant epochs from which we spring descended from astronomers Orion's
+                sword shores of the cosmic ocean.
+            </p>
+            <a href="#">Visit Website</a>
+        </div>
+        <div>
+            <figure>
+                <!-- Photo by Rawpixel on Unsplash -->
+                <img src="https://images.unsplash.com/photo-1535359056830-d4badde79747?ixlib=rb-1.2.1&auto=format&fit=crop&w=3402&q=80"
+                    alt="Three different glasses of beer">
+                <figcaption>
+                    <h3>Vast cosmic arena</h3>
+                </figcaption>
+            </figure>
+            <p>
+                Galaxies the ash of stellar alchemy prime number science inconspicuous motes of rock and gas brain
+                is the seed of intelligence.
+            </p>
+            <a href="#">Visit Website</a>
+        </div>
+
+    </section>
+
+</body>
+
+</html>

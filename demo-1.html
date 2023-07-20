@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1, initial-scale=1.0">
+    <style>
+        .flex-wrapper {
+            display: flex;
+            border: 1px solid;
+        }
+
+        .item {
+            width: 2000px;
+        }
+
+        .row {
+            list-style-type: none;
+            padding: 16px;
+        }
+
+        .item {
+            height: 50px;
+            border: 2px solid;
+            border-radius: 4px;
+            background: hotpink;
+            margin: 16px;
+            padding: 3px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p>
+        The second instance of .item, however, is rendered inside a Flex container, which means it's using Flexbox layout. In the Flexbox algorithm, width is more of a suggestion.
+    </p>
+
+    <div class="item"></div>
+
+    <div class="flex-wrapper">
+        <div class="item">second item (width:2000px), At small container, it'll shrink to accommodate it.</div>
+        <div> this is inside Flexbox </div>
+    </div>
+</body>
+
+</html>
