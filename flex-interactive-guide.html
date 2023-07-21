@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Demo</title>
+    <style>
+        html {
+            font-size: 18px;
+        }
+
+        body {
+            padding: 30px;
+            margin: 10px auto;
+            max-width: 800px;
+        }
+
+        #flex-basis-value {
+            transition: all 1.5s;
+            color: chartreuse;
+            background-color: #515858;
+            padding: 0 10px;
+            border-radius: 3px;
+        }
+
+        .box {
+            border: 1px solid rebeccapurple;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .flex-row {
+            flex-direction: row;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+    </style>
+    <script>
+        function checkDirection(id, direction) {
+            console.log(id, direction);
+            document.getElementById(id).classList.value = 'box flex-' + direction;
+        }
+        function changeJustifyContent(id, justify) {
+            console.log(id, justify.value);
+            document.getElementById(id).style.justifyContent = justify.value;
+        }
+        function changeAlignItems(id, align) {
+            console.log(id, align.value);
+            document.getElementById(id).style.alignItems = align.value;
+        }
+        function changeAlignSelf(id, align) {
+            console.log(id, align.value);
+            document.getElementById(id).style.alignSelf = align.value;
+        }
+        function changeFlexBasis(elem, showId, itemId) {
+            var data = elem.value;
+            console.log(data);
+            document.getElementById(showId).textContent = `${data}px`;
+            document.getElementById(itemId).style.flexBasis = `${data}px`;
+        }
+        function changeFlexGrow(itemId, grow) {
+            document.getElementById(itemId).style.flexGrow = grow;
+        }
+    </script>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Flexbox Interactive Guide</h1>
+
+    <div>
+        Flexbox is all about arranging a group of items in a row or column, and giving us a amount of control over
+        the distribution and alignment of those items. As the name suggests, Flexbox is all about flexibility.
+        We can control whether items grow or shrink, how the extra space is distributed, and more.
+    </div>
+    <h2>Flex direction</h2>
+    <div>
+        With flex-direction: row, the <b>primary axis</b> runs horizontally, from left to right. When we flip to
+        flex-direction: column, the <b>primary axis</b> runs vertically, from top to bottom.
+    </div>
+    <div style="display: flex;height: 165px;" class="box flex-row" id="001">
+        <div class="box">1</div>
+        <div class="box">2</div>
+    </div>
+    <div style="display: flex;">
+        <div>Direction</div>
+        <label>
+            <input type="radio" name="flex-demo-direction1" value="row" checked
+                onclick="checkDirection('001', 'row')">row</label>
+        <label>
+            <input type="radio" name="flex-demo-direction1" value="column"
+                onclick="checkDirection('001', 'col')">column</label>
+    </div>
+    <h2>Alignment - primary axis</h2>
+    <div>We can change how children are distributed along the primary axis using the <b>justify-content</b> property:
+    </div>
+    <div style="display: flex;width: 600px;height: 400px;" class="box flex-row" id="002">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div style="display: flex;gap: 20px;">
+        <div>Direction</div>
+        <label>
+            <input type="radio" name="flex-demo-direction2" value="row" checked
+                onclick="checkDirection('002', 'row')">row</label>
+        <label>
+            <input type="radio" name="flex-demo-direction2" value="column"
+                onclick="checkDirection('002', 'col')">column</label>
+
+        <div>justify-content</div>
+        <select id="flex-demo-justify" onchange="changeJustifyContent('002', this)">
+            <option value="flex-start" selected="">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+        </select>
+    </div>
+
+    <h2>Alignment - cross axis</h2>
+    <div>For the cross axis, things are a bit different. We use the <b>align-items</b> property:</div>
+    <div style="display: flex;width: 600px;height: 400px;" class="box flex-row" id="003">
+        <div class="box" style="padding: 40px;">Hello</div>
+        <div class="box" style="padding: 10px;">2</div>
+        <div class="box">3</div>
+        <div class="box" style="padding: 30px;">Hi World</div>
+    </div>
+    <div style="display: flex;max-width: 600px;">
+        <div>Direction</div>
+        <label>
+            <input type="radio" name="flex-demo-direction3" value="row" checked
+                onclick="checkDirection('003', 'row')">row</label>
+        <label>
+            <input type="radio" name="flex-demo-direction3" value="column"
+                onclick="checkDirection('003', 'col')">column</label>
+        <div style="flex-grow: 1;"> </div>
+        <div>justify-content</div>
+        <select id="flex-demo-justify" onchange="changeJustifyContent('003', this)">
+            <option value="flex-start" selected="">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="space-between">space-between</option>
+            <option value="space-around">space-around</option>
+            <option value="space-evenly">space-evenly</option>
+        </select>
+        <div style="flex-grow: 1;"> </div>
+        <div>align-items</div>
+        <select id="flex-demo-align-items" onchange="changeAlignItems('003', this)">
+            <option value="stretch" selected="">stretch</option>
+            <option value="flex-start">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="baseline">baseline</option>
+        </select>
+    </div>
+
+    <h4 "><font style=" color: red;">justify-content / align-items</font> is applied to container.</h4>
+
+    <h2>Alignment - cross axis - individual element</h2>
+    <div><b>align-self</b> is applied to individual child element, not the container. It allows us to change the
+        alignment of a
+        specific child along the cross axis:</div>
+    <div style="display: flex;width: 600px;height: 400px;" class="box flex-row" id="004">
+        <div class="box" style="background-color: chartreuse;" id="item-1">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div style="display: flex;max-width: 600px;">
+        <div>Direction</div>
+        <label>
+            <input type="radio" name="flex-demo-direction4" value="row" checked
+                onclick="checkDirection('004', 'row')">row</label>
+        <label>
+            <input type="radio" name="flex-demo-direction4" value="column"
+                onclick="checkDirection('004', 'col')">column</label>
+        <div style="flex-grow: 1;"> </div>
+        <div style="margin-right: 10px;background-color: chartreuse;">align-self</div>
+        <select id="flex-demo-justify" onchange="changeAlignSelf('item-1', this)">
+            <option value="stretch" selected="">stretch</option>
+            <option value="flex-start">flex-start</option>
+            <option value="center">center</option>
+            <option value="flex-end">flex-end</option>
+            <option value="baseline">baseline</option>
+        </select>
+    </div>
+
+    <h1>Growing and shrinking</h1>
+    <h2>flex-basis</h2>
+    <div>It allows us to set the hypothetical size of an element in the primary-axis direction, </div>
+    <ul>
+        <li>In a Flex row, flex-basis does the same thing as width. </li>
+        <li>In a Flex column, flex-basis does the same thing as height.</li>
+    </ul>
+    <p>
+        At a certain point, there isn't enough space for all of the elements to sit at their assigned size, and so
+        they have to compromise, in order to avoid an overflow.
+    </p>
+    <div style="display: flex;width: 500px;height: 400px;" class="box flex-row" id="005">
+        <div class="box" style="background-color: chartreuse; flex-basis: 50px;" id="item-basis-1">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+    <div style="display: flex;max-width: 600px;">
+        <div>Direction</div>
+        <label>
+            <input type="radio" name="flex-demo-direction4" value="row" checked onclick="checkDirection('005', 'row')"
+                style="transition: all 0.5s;">row</label>
+        <label>
+            <input type="radio" name="flex-demo-direction4" value="column" onclick="checkDirection('005', 'col')"
+                style="transition: all 0.5s;">column</label>
+        <div style="flex-grow: 1;"> </div>
+
+    </div>
+    <div style="display: flex;max-width: 600px;">
+        <div style="margin-right: 20px;background-color: chartreuse;">flex-basis</div>
+        <input style="background-color:chartreuse; width: 300px;" type="range" id="flex-demo-Rmlaim_flexBasis" min="50"
+            max="500" value="50" oninput="changeFlexBasis(this, 'flex-basis-value', 'item-basis-1')">
+        <div id="flex-basis-value">50px</div>
+    </div>
+
+    <h2>flex-grow</h2>
+    <p>By default, elements in a Flex context will shrink down to their minimum comfortable size along the primary axis. This often creates extra space.</p>
+    <p>We can specify how that space should be consumed with the flex-grow property:</p>
+
+    <div style="display: flex;width: 600px;height: 400px;" class="box flex-row" id="006">
+        <div class="box" style="background-color: chartreuse;" id="item-grow-1">1</div>
+        <div class="box" style="background-color:coral;" id="item-grow-2">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+    </div>
+
+    <div style="display: flex;max-width: 600px;">
+        <div>Direction</div>
+        <label>
+            <input type="radio" name="flex-demo-direction4" value="row" checked="" 
+                onclick="checkDirection('006', 'row')">row</label>
+        <label>
+            <input type="radio" name="flex-demo-direction4" value="column" 
+                onclick="checkDirection('006', 'col')" >column</label>
+
+        <div style="flex-grow: 1;"> </div>
+        <div  style="background-color: chartreuse;padding-right: 4px;">flex-grow #1</div>
+        <label  style="background-color: chartreuse;padding-right: 4px;">
+            <input type="radio" name="flex-demo-grow1" value="row" checked="" 
+                onclick="changeFlexGrow('item-grow-1', '0')">0</label>
+        <label  style="background-color: chartreuse;padding-right: 4px;">
+            <input type="radio" name="flex-demo-grow1" value="column" 
+                onclick="changeFlexGrow('item-grow-1', '1')" >1</label>
+        
+        <div style="flex-grow: 1;"> </div>
+        <div  style="background-color: coral;padding-right: 4px;">flex-grow #2</div>
+        <label  style="background-color: coral;padding-right: 4px;">
+            <input type="radio" name="flex-demo-grow2" value="row" checked="" 
+                onclick="changeFlexGrow('item-grow-2', '0')">0</label>
+        <label  style="background-color: coral;padding-right: 4px;">
+            <input type="radio" name="flex-demo-grow2" value="column" 
+                onclick="changeFlexGrow('item-grow-2', '1')" >1</label>                
+
+    </div>
+
+</body>
+
+</html>
