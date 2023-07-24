@@ -64,7 +64,7 @@
         }
 
         .flex-wrap-align-style {
-            min-height: 300px ;
+            min-height: 300px;
             width: 450px;
             border: 8px solid #A92570;
         }
@@ -81,6 +81,14 @@
 
         .flex-col {
             flex-direction: column;
+        }
+
+        .form-input {
+            display: block;
+            height: 2.0rem;
+            width: 100%;
+            box-sizing: border-box;
+            border-radius: 5px;
         }
     </style>
     <script>
@@ -390,8 +398,10 @@
         <div style="display: flex;justify-content: space-between;width: 650px;">
             <div style="display: flex;flex-direction: column; ">
                 <div>flex-wrap</div>
-                <label><input onchange="changeWrap('008', 'nowrap')" type="radio" name="flex-demo-R1ctaim_--wrap" value="nowrap">nowrap (default)</label>
-                <label><input onchange="changeWrap('008', 'wrap')" type="radio" name="flex-demo-R1ctaim_--wrap" value="wrap" checked>wrap</label>
+                <label><input onchange="changeWrap('008', 'nowrap')" type="radio" name="flex-demo-R1ctaim_--wrap"
+                        value="nowrap">nowrap (default)</label>
+                <label><input onchange="changeWrap('008', 'wrap')" type="radio" name="flex-demo-R1ctaim_--wrap"
+                        value="wrap" checked>wrap</label>
             </div>
             <div style="display: flex;flex-direction: column; ">
                 <div>container width ：<span id="span-wrap-score">600px</span></div>
@@ -434,7 +444,7 @@
         property:</p>
 
     <div>
-        <div style="display: flex;justify-content: space-between;">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
 
             <div style="display: flex;flex-direction: column; ">
                 <div>justify-content</div>
@@ -483,6 +493,25 @@
             <div class="flex-wrap-align-item" id="y-dd003" style="min-height: 100px;">item-003</div>
             <div class="flex-wrap-align-item" id="y-dd004" style="min-height: 50px;">item-004</div>
         </div>
+    </div>
+
+    <h2>Responsive without Media Query</h2>
+    <p>here is a demo with Flexbox to make Responsive UI without Media Query.</p>
+
+    <div>
+        <div style="display: flex;flex-direction: column; ">
+            <div>container width ：<span id="span-wrap-score-3">450px</span></div>
+            <input style="width:250px;background: #A92570;" type="range" id="flex-demo-R1ctaim_containerWidth" min="140"
+                max="750" value="450" oninput="changeWrapContainerWidth(this, '0090', 'span-wrap-score-3')">
+        </div>
+        <form id="0090" class="flex-wrap-box flex-wrap-align-style"
+            style="justify-content: flex-start;align-items: flex-end;gap: 8px;min-height: 0;">
+            <label for="email-field" style="flex-grow: 3;flex-basis: 200px;">
+                email: <input type="text" id="email-field" class="form-input"></label>
+            <label for="password-field" style="flex-grow: 2;flex-basis: 200px;">
+                password: <input type="text" id="password-field" class="form-input"></label>
+            <input type="button" value="submit" style="flex-grow: 1;flex-basis: 80px;" class="form-input">
+        </form>
     </div>
 
     <div style="height: 300px;"> </div>
