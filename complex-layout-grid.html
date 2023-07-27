@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Layout With Grid</title>
+    <style>
+       
+        div.container {
+            
+            flex-grow: 1;
+            display: grid;
+            gap: 0px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 6rem 1fr 3rem;
+            grid-template-areas: 
+                    "header header header header"
+                    "main   main   main   sidebar"
+                    "footer footer footer footer";
+            
+        }
+        @media  (max-width: 600px) {
+            div.container {
+                grid-template-columns: 1fr 3rem;
+                grid-template-rows: 3rem 1fr 6rem;
+                grid-template-areas: 
+                    "header sidebar" 
+                    "main   main"  
+                    "footer footer";
+            }
+        }
+
+        div.main {
+            background: linear-gradient(45deg,pink,#8ba6d7) ;
+            border-radius: 5px;
+            grid-area: main;
+            margin: 2px;
+            padding: 10px;
+        }
+        div.header {
+            background: linear-gradient(45deg,lightblue,pink) ;
+            border-radius: 5px;
+            grid-area: header;
+            margin: 2px;
+            padding: 10px;
+        }
+        div.sidebar {
+            background: linear-gradient(45deg,lightgrey,rgb(117, 177, 99)) ;
+            border-radius: 5px;
+            grid-area: sidebar;
+            margin: 2px;
+            padding: 10px;
+        }
+        div.footer {
+            background: linear-gradient(45deg,burlywood, rgb(222, 130, 222));
+            border-radius: 5px;
+            grid-area: footer;
+            margin: 2px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body style="margin: 0;">
+    <div style="display: flex;flex-direction: column;height: 100vh; padding: 10px; box-sizing: border-box; ">
+        <h1 style="display: block;">Complex Layout With Grid</h1> 
+        <p>Creating complex layout with Grid is relative simple than Flexbox.</p>
+        
+        <div class="container">
+            <div class="header">1</div>
+            <div class="main">2</div>
+            <div class="sidebar">3</div>
+            <div class="footer">4</div>
+        </div>
+    </div>
+</body>
+</html>

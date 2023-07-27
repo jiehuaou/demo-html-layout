@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1000 items inside Flex</title>
+    <style>
+        #container.flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        div.flex-item {
+            flex-basis: 100px;
+            flex-grow: 0;
+            border-radius: 5px;
+            border: 1px solid cornflowerblue;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h1>10000 items inside Flex，</h1>
+    <p> performance better than Grid.</p>
+    <div id="container" class="flex-container">
+    </div>
+    <script>
+        for (let i = 0; i < 10000; i++) {
+            let item = document.createElement("div");
+            item.setAttribute("class", "flex-item");
+            item.textContent = i;
+            document.getElementById("container").appendChild(item);
+        }
+    </script>
+</body>
+
+</html>

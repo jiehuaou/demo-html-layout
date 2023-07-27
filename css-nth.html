@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS nth-child(n)</title>
+    <style>
+        .user-item {
+            border: 1px solid #ff0037c4;
+            padding: 4px;
+        }
+
+        .pseudo-item {
+            border: 1px dashed #0400ffc4;
+            padding: 4px;
+        }
+
+        .pseudo-item:nth-child(2n) {
+            color: red;
+            grid-column: 1;
+        }
+
+        .user-item:nth-child(1) {
+            grid-row: 1;
+        }
+
+        .main {
+            display: grid;
+            grid-template-columns: 100px 100px 100px;
+            max-width: 350px;
+            margin: auto 50px;
+            gap: 20px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="pseudo-item">1</div>
+        <div class="pseudo-item" style="height: 6rem;">2</div>
+        <div class="pseudo-item">3</div>
+        <div class="pseudo-item">4</div>
+
+        <div class="pseudo-item">5</div>
+        <div class="pseudo-item">6</div>
+        <div class="pseudo-item">7</div>
+        <div class="pseudo-item">8</div>
+
+        <div class="pseudo-item">9</div>
+        <div class="pseudo-item">10</div>
+        <div class="pseudo-item">11</div>
+        <div class="pseudo-item">12</div>
+
+        <div class="user-item">A</div>
+        <div class="user-item">B</div>
+        <div class="user-item">C</div>
+    </div>
+</body>
+
+</html>

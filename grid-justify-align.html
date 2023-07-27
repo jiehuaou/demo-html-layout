@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complex Layout With Grid</title>
+    <style>
+        :root {
+            --some-deg: 45deg;
+            --item-padding: 10px;
+            --item-margin: 5px;
+        }
+
+        div.container {
+
+            flex-grow: 1;
+            display: grid;
+            gap: 0px;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 6rem 1fr 3rem 3rem;
+            grid-template-areas:
+                "header header header header"
+                "main   main   main   sidebar"
+                "footer footer footer footer";
+
+        }
+
+        /* @media  (max-width: 600px) {
+            div.container {
+                grid-template-columns: 1fr 3rem;
+                grid-template-rows: 3rem 1fr 6rem;
+                grid-template-areas: 
+                    "header sidebar" 
+                    "main   main"  
+                    "footer footer";
+            }
+        } */
+
+        div.main,
+        div.header,
+        div.sidebar,
+        div.footer {
+            opacity: 0.85;
+            font-weight: 900;
+        }
+
+        div.main {
+            background: linear-gradient(var(--some-deg), pink, lightblue);
+            border-radius: 5px;
+            grid-area: main;
+            margin: var(--item-margin);
+            padding: var(--item-padding);
+            
+        }
+
+        div.header {
+            background: linear-gradient(var(--some-deg), lightblue, pink);
+            border-radius: 5px;
+            grid-area: header;
+            margin: var(--item-margin);
+            padding: var(--item-padding);
+        }
+
+        div.sidebar {
+            background: linear-gradient(var(--some-deg), darkseagreen, burlywood);
+            border-radius: 5px;
+            grid-area: sidebar;
+            margin: var(--item-margin);
+            padding: var(--item-padding);
+        }
+
+        div.footer {
+            background: linear-gradient(45deg, burlywood, lightgrey);
+            border-radius: 5px;
+            grid-area: footer;
+            margin: var(--item-margin);
+            padding: var(--item-padding);
+        }
+
+        .container>.pseudo-item {
+            border: 1px dashed #8f9396;
+            width: 100%;
+            height: 100%;
+            justify-self: stretch;
+        }
+    </style>
+    <script>
+        function changeJustifyItems(id, select) {
+            document.getElementById(id).style.justifyItems = select.value;
+        }
+        function changeAlignItems(id, select) {
+            document.getElementById(id).style.alignItems = select.value;
+        }
+
+    </script>
+</head>
+
+<body style="margin: 0;">
+    <div style="display: flex;flex-direction: column;height: 100vh; padding: 10px; box-sizing: border-box;gap:5px; ">
+        <h1 style="display: block;">Grid Area Alignment in Row & Column</h1>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+            <div style="display: flex;flex-direction: column; ">
+                <div><b>justify-items (Row)</b></div>
+                <select id="flex-demo-justify-z" onchange="changeJustifyItems('009', this)">
+                    <option value="start">start</option>
+                    <option value="stretch" selected>stretch</option>
+                    <option value="center">center</option>
+                    <option value="end">end</option>
+                </select>
+            </div>
+            <div style="display: flex;flex-direction: column; ">
+                <div><b>align-items (Column)</b></div>
+                <select id="flex-demo-align-items" onchange="changeAlignItems('009', this)">
+                    <option value="start">start</option>
+                    <option value="stretch" selected>stretch</option>
+                    <option value="center">center</option>
+                    <option value="end">end</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="container" id="009">
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+            <div class="pseudo-item"></div>
+
+            <div class="header">1</div>
+            <div class="main">2</div>
+            <div class="sidebar">3</div>
+            <div class="footer">4</div>
+        </div>
+    </div>
+</body>
+<script>
+    //configPseudoItem();
+    var arr = document.getElementsByClassName('pseudo-item');
+    [...arr].forEach((e, index) => {
+        let r = Math.trunc(index/4) + 1;
+        let c = index % 4 + 1;
+        e.style.gridArea = `${r}/${c}`;
+        console.log(`${index} => ${r} / ${c} `);
+    })
+
+    // [1,2,3,4,5,6,7,8,9,10,11,12].forEach(e=> console.log((e+1) % 4))
+    // [1,2,3,4,5,6,7,8,9,10,11,12].forEach(e=> {let r = Math.trunc(e/5) + 1; console.log(`${e} => ${r}`); })
+</script>
+
+</html>

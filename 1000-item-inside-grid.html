@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10000 items inside Grid</title>
+    <style>
+        #container.flex-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        div.flex-item {
+            
+            border-radius: 5px;
+            border: 1px solid cornflowerblue;
+            padding: 10px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <h1>10000 items inside Grid</h1>
+    <div id="container" class="flex-container">
+    </div>
+    <script>
+        for (let i = 0; i < 10000; i++) {
+            let item = document.createElement("div");
+            item.setAttribute("class", "flex-item");
+            item.textContent = i;
+            document.getElementById("container").appendChild(item);
+        }
+    </script>
+</body>
+
+</html>
