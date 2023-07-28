@@ -94,13 +94,73 @@
             document.getElementById(id).style.alignItems = select.value;
         }
 
+        function changeGridTemplateColumns(id, select) {
+            document.getElementById(id).style.gridTemplateColumns = select.value;
+        }
+
+        function changeGridTemplateRows(id, select) {
+            document.getElementById(id).style.gridTemplateRows = select.value;
+        }
+
+        function changeJustifyContent(id, select) {
+            document.getElementById(id).style.justifyContent = select.value;
+        }
+        function changeAlignContent(id, select) {
+            document.getElementById(id).style.alignContent = select.value;
+        }
+
     </script>
 </head>
 
 <body style="margin: 0;">
     <div style="display: flex;flex-direction: column;height: 100vh; padding: 10px; box-sizing: border-box;gap:5px; ">
         <h1 style="display: block;">Grid Area Alignment in Row & Column</h1>
-        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px;">
+
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex;flex-direction: column; ">
+                <div><b>Grid Column Template</b></div>
+                <select id="flex-demo-justify-z" onchange="changeGridTemplateColumns('009', this)">
+                    <option value="1fr 1fr 1fr 1fr" selected>1fr 1fr 1fr 1fr</option>
+                    <option value="100px 100px 100px 100px">100px 100px 100px 100px</option>
+                </select>
+            </div>
+            <div style="display: flex;flex-direction: column; ">
+                <div><b>Grid Row Template</b></div>
+                <select id="flex-demo-justify-z" onchange="changeGridTemplateRows('009', this)">
+                    <option value="6rem 1fr 3rem 3rem" selected>6rem 1fr 3rem 3rem</option>
+                    <option value="6rem 6rem 3rem 3rem">6rem 6rem 3rem 3rem</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
+            <div style="display: flex;flex-direction: column; ">
+                <div><b>justify-content (Row)</b></div>
+                <select id="flex-demo-justify-z" onchange="changeJustifyContent('009', this)">
+                    <option value="start">start</option>
+                    <option value="stretch" selected>stretch</option>
+                    <option value="center">center</option>
+                    <option value="end">end</option>
+                    <option value="space-around">space-around</option>
+                    <option value="space-between">space-between</option>
+                    <option value="space-evenly">space-evenly</option>
+                </select>
+            </div>
+            <div style="display: flex;flex-direction: column; ">
+                <div><b>align-content (Column)</b></div>
+                <select id="flex-demo-align-items" onchange="changeAlignContent('009', this)">
+                    <option value="start">start</option>
+                    <option value="stretch" selected>stretch</option>
+                    <option value="center">center</option>
+                    <option value="end">end</option>
+                    <option value="space-around">space-around</option>
+                    <option value="space-between">space-between</option>
+                    <option value="space-evenly">space-evenly</option>
+                </select>
+            </div>
+
+            <div style="width: 30px;"></div>
+
             <div style="display: flex;flex-direction: column; ">
                 <div><b>justify-items (Row)</b></div>
                 <select id="flex-demo-justify-z" onchange="changeJustifyItems('009', this)">
