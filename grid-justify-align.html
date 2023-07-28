@@ -52,7 +52,7 @@
             grid-area: main;
             margin: var(--item-margin);
             padding: var(--item-padding);
-            
+
         }
 
         div.header {
@@ -85,6 +85,38 @@
             height: 100%;
             justify-self: stretch;
         }
+
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            border-bottom: 1px dotted black;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+
+        .tooltiptext {
+            display: none;
+            width: 320px;
+            background-color: rgb(91, 18, 175);
+            color: #fff;
+            x-text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 1.3rem;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            /* 1.get full with and full height */
+            top: calc(100vh/2);
+            left: calc(100vw/2);
+            /* 2.move back 50% on X and Y axis */
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        /* .tooltip:hover .tooltiptext2 {
+            display: block;
+        } */
     </style>
     <script>
         function changeJustifyItems(id, select) {
@@ -109,6 +141,16 @@
             document.getElementById(id).style.alignContent = select.value;
         }
 
+        function showUp(params) {
+            console.log(params);
+            let id = params.dataset.ref;
+            document.getElementById(id).style.display = 'block';
+        }
+        function showOff(params) {
+            let id = params.dataset.ref;
+            document.getElementById(id).style.display = 'none';
+        }
+
     </script>
 </head>
 
@@ -121,6 +163,7 @@
                 <div><b>Grid Column Template</b></div>
                 <select id="flex-demo-justify-z" onchange="changeGridTemplateColumns('009', this)">
                     <option value="1fr 1fr 1fr 1fr" selected>1fr 1fr 1fr 1fr</option>
+                    <option value="auto 100px 100px 100px">auto 100px 100px 100px</option>
                     <option value="100px 100px 100px 100px">100px 100px 100px 100px</option>
                 </select>
             </div>
@@ -128,6 +171,7 @@
                 <div><b>Grid Row Template</b></div>
                 <select id="flex-demo-justify-z" onchange="changeGridTemplateRows('009', this)">
                     <option value="6rem 1fr 3rem 3rem" selected>6rem 1fr 3rem 3rem</option>
+                    <option value="auto 6rem 3rem 3rem">auto 6rem 3rem 3rem</option>
                     <option value="6rem 6rem 3rem 3rem">6rem 6rem 3rem 3rem</option>
                 </select>
             </div>
@@ -135,7 +179,9 @@
 
         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 10px;">
             <div style="display: flex;flex-direction: column; ">
-                <div><b>justify-content (Row)</b></div>
+                <div class="tooltip" onmouseover="showUp(this)" onmouseleave="showOff(this)" data-ref="tooltip-001">
+                    <b>justify-content (Row ➡️)</b>
+                </div>
                 <select id="flex-demo-justify-z" onchange="changeJustifyContent('009', this)">
                     <option value="start">start</option>
                     <option value="stretch" selected>stretch</option>
@@ -147,7 +193,9 @@
                 </select>
             </div>
             <div style="display: flex;flex-direction: column; ">
-                <div><b>align-content (Column)</b></div>
+                <div class="tooltip" onmouseover="showUp(this)" onmouseleave="showOff(this)" data-ref="tooltip-002">
+                    <b>align-content (Column ⬇️)</b>
+                </div>
                 <select id="flex-demo-align-items" onchange="changeAlignContent('009', this)">
                     <option value="start">start</option>
                     <option value="stretch" selected>stretch</option>
@@ -162,7 +210,9 @@
             <div style="width: 30px;"></div>
 
             <div style="display: flex;flex-direction: column; ">
-                <div><b>justify-items (Row)</b></div>
+                <div class="tooltip" onmouseover="showUp(this)" onmouseleave="showOff(this)" data-ref="tooltip-003">
+                    <b>justify-items (Row ➡️)</b>
+                </div>
                 <select id="flex-demo-justify-z" onchange="changeJustifyItems('009', this)">
                     <option value="start">start</option>
                     <option value="stretch" selected>stretch</option>
@@ -171,7 +221,9 @@
                 </select>
             </div>
             <div style="display: flex;flex-direction: column; ">
-                <div><b>align-items (Column)</b></div>
+                <div class="tooltip" onmouseover="showUp(this)" onmouseleave="showOff(this)" data-ref="tooltip-004">
+                    <b>align-items (Column ⬇️)</b>
+                </div>
                 <select id="flex-demo-align-items" onchange="changeAlignItems('009', this)">
                     <option value="start">start</option>
                     <option value="stretch" selected>stretch</option>
@@ -205,12 +257,33 @@
             <div class="footer">4</div>
         </div>
     </div>
+    <div class="tooltiptext" id="tooltip-001">
+        <b>justify-content (Row ➡️)</b>,
+        Sometimes the total size of your grid might be less than the size of its
+        grid container, such as all of your grid items are sized with non-flexible units
+        like px. In this case you can set the alignment of the grid within the grid container. This
+        property aligns the grid along the inline (row➡️) axis
+    </div>
+    <span class="tooltiptext" id="tooltip-002">
+        <b>align-content (Column ⬇️)</b>,
+        Sometimes the total size of your grid might be less than the size of its
+        grid container. This could happen if all of your grid items are sized with non-flexible units
+        like px. In this case you can set the alignment of the grid within the grid container. This
+        property aligns the grid along the block (column ⬇️) axis. </span>
+    <span class="tooltiptext" id="tooltip-003">
+        <b>justify-items (Row ➡️)</b>,<br>
+        Aligns grid items along the inline (row➡️) axis within its Grid
+        Area.</span>
+    <span class="tooltiptext" id="tooltip-004">
+        <b>align-items (Column ⬇️)</b>,<br>
+        Aligns grid items along the block (column ⬇️) axis within its Grid
+        Area.</span>
 </body>
 <script>
     //configPseudoItem();
     var arr = document.getElementsByClassName('pseudo-item');
     [...arr].forEach((e, index) => {
-        let r = Math.trunc(index/4) + 1;
+        let r = Math.trunc(index / 4) + 1;
         let c = index % 4 + 1;
         e.style.gridArea = `${r}/${c}`;
         console.log(`${index} => ${r} / ${c} `);
