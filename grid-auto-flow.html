@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Auto Flow</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .item {
+            border-radius: 5px;
+            border: 1px dashed gray;
+            padding: 5px;
+        }
+
+        .gbox {
+            margin-top: 20px;
+            display: grid;
+            justify-content: center;
+            grid-template-columns: 70px 70px 70px 70px 70px;
+            grid-template-rows: 60px 60px 60px;
+            border: 2px dashed blue;
+            padding: 5px;
+            gap: 5px;
+        }
+
+        .color1 {
+            background-color: limegreen;
+        }
+
+        p {
+            font-size: 1.2rem;
+        }
+
+        li {
+            font-size: 1.1rem;
+            padding-bottom: 10px
+        }
+    </style>
+    <script>
+        function changeGridAutoFlow(id, comp) {
+            document.getElementById(id).style.gridAutoFlow = comp.value;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Grid Auto Flow</h1>
+    <div style="display:flex;flex-direction: column; max-width: 600px;margin: auto;">
+
+        <p style="">
+            If you have grid items that you don’t explicitly place on the grid, the auto-placement algorithm kicks in to
+            automatically place the items. This property controls how the auto-placement algorithm works.
+
+        </p>
+        <div><span class="title">row</span> - tells the auto-placement algorithm to fill in each row in turn, adding
+            new rows as necessary (default)</div>
+        <div><span class="title">column</span> – tells the auto-placement algorithm to fill in each column in turn,
+            adding new columns as necessary</div>
+        <div><span class="title">dense</span> – tells the auto-placement algorithm to attempt to fill in holes earlier
+            in the grid if smaller items
+            come up later</div>
+
+        <div style="display: flex;flex-direction: column; align-self: flex-end; ">
+            <div><b>Grid Auto Flow</b></div>
+            <select id="flex-demo-justify-z" onchange="changeGridAutoFlow('009', this)">
+                <option value="row" selected>row</option>
+                <option value="row dense">row dense</option>
+                <option value="column">column</option>
+                <option value="column dense">column dense</option>
+            </select>
+        </div>
+
+        <div class="gbox" id="009">
+            <div class="item">1</div>
+            <div class="item" style="grid-row: auto/span 2;background-color: rgb(85, 193, 85);">2</div>
+            <div class="item">3</div>
+            <div class="item">4</div>
+            <div class="item" style="grid-row: auto/span 2;background-color: rgb(198, 189, 235);">5</div>
+            <div class="item" style="grid-column: auto/span 2;background-color: rgb(240, 175, 209);">6</div>
+            <div class="item">7</div>
+            <div class="item">8</div>
+            <div class="item">9</div>
+            <div class="item">10</div>
+            <div class="item">11</div>
+            <div class="item">12</div>
+            <div class="item">13</div>
+            <div class="item">14</div>
+        </div>
+    </div>
+
+</body>
+
+</html>
